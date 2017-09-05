@@ -1,0 +1,6 @@
+Guidelines from previous meeting: 
+
+-Use JSON, write in Python
+-Use dictionaries for input and output
+-input: a set of {value, weight} pairs and a total capacity W
+-output: an optimal subset of the input pairs 
