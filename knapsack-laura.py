@@ -1,6 +1,6 @@
 import sys
 import numpy as np
-
+import time
 
 class Knapsack:
     W = 0
@@ -18,7 +18,7 @@ class Knapsack:
         # v2 w2
         # ...
         # vn wn
-        #f = open(filename)
+        # f = open(filename)
         with open(filename) as f:
             self.W = int(f.readline())
             self.N = int(f.readline())
@@ -67,6 +67,10 @@ class Knapsack:
 if __name__ == "__main__":
     k = Knapsack()
     k.read_input(sys.argv[1])
+    t0 = time.time()
     k.make_table()
+    t1 = time.time()
     k.backtrack()
-
+    t2 = time.time()
+    print("Time to build table: ", t1 - t0)
+    print("Time to backtrack: ", t2 - 1)
