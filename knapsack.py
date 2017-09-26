@@ -1,6 +1,19 @@
 import sys
 import numpy as np
 import time
+import json
+import generate_problems
+
+def generate_json():
+    return generate_problems.create_random_problems_json_file()
+
+def write_json(obj, filename):
+    with open(filename, mode='w') as f:
+        json.dump(obj, f)
+
+def read_json(filename):
+    with open(filename) as f:
+        return json.load(f)
 
 class Knapsack:
     W = 0
