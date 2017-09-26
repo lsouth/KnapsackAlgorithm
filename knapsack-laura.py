@@ -56,7 +56,7 @@ class Knapsack:
         #    else:
                 self.W -= int(self.items[i][1])
                 opt = self.table[i][self.W]
-        #        print("Take item ", i)
+                print("Take item ", i)
 
         #    if self.table[i][current_weight] == opt:
         #        print("Do not take item ", i)
