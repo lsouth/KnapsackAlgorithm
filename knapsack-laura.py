@@ -51,12 +51,12 @@ class Knapsack:
                 return
             check = self.table[i - 1][self.W - int(self.items[i][1])]
         #    print("Checking table value at n = ", i - 1, "w = ", self.W - int(self.items[i][1]), " : ", check)
-            if check + int(self.items[i][0]) != opt:
-                print("Do not take item ", i)
-            else:
+            if check + int(self.items[i][0]) == opt:
+        #        print("Do not take item ", i)
+        #    else:
                 self.W -= int(self.items[i][1])
                 opt = self.table[i][self.W]
-                print("Take item ", i)
+        #        print("Take item ", i)
 
         #    if self.table[i][current_weight] == opt:
         #        print("Do not take item ", i)
@@ -73,4 +73,4 @@ if __name__ == "__main__":
     k.backtrack()
     t2 = time.time()
     print("Time to build table: ", t1 - t0)
-    print("Time to backtrack: ", t2 - 1)
+    print("Time to backtrack: ", t2 - t1)
