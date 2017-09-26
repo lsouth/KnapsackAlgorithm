@@ -4,3 +4,10 @@ Guidelines from previous meeting:
 -Use dictionaries for input and output
 -input: a set of {value, weight} pairs and a total capacity W
 -output: an optimal subset of the input pairs 
+
+September 19th Meeting:
+-Make generator (using G-S assignment example)
+-Create joint algorithm 
+-Time joint algorithm 
+-Make blog
+
