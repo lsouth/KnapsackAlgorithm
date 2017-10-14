@@ -27,3 +27,11 @@ way to actually create a new line, instead of just prining out /n. I will contin
 October 14: Laura
 
 Today I fixed the Generator file so that it produces a .json file with the traditional formatting. I tested it with our knapsack.py and it runs successfully! I will try to get the timing done today as well, now that the generator can be used to create large files.
+
+After looking at the timing data, I think we have a bug somewhere in our backtracking algorithm. The program is spending virtually no time in that method, compared to the time spent constructing the table. Additionally, the program isn't returning accurate solutions to the larger problems (the value of the selected items is not equal to the optimum calculated when building the table), so we will have to look into that this week. 
+
+I also made a slight alteration to our expected JSON format. Before we were using the format 
+
+[{"capacity": maxWeight} , {"value_i": "weight_i", "value_i+1": "weight_i+1", ... }] which was fine on small problems but caused issues with big problems. Dicts cannot have duplicate keys so when we were creating the random problems it would create override any duplicate "value_i"s so the end result would have fewer pairs that expected. To fix this, I changed to using this format:
+
+[{"capacity": maxWeight} , {1 : [value_1 , weight_1] , 2 : [value_2 , weight_2] , ... }] which ensures that there will be no duplicate keys. 
