@@ -23,3 +23,7 @@ After working on the generator for a bit, I've submitted a rough version of a ge
 bigger probelem sets so that our complexity can be tested at a higher and more strenous level to test the limits 
 of our program. Unfortuantely, I was unable to find a solution that correctly used the newline character as a 
 way to actually create a new line, instead of just prining out /n. I will continue to work on this.
+
+October 14: Laura
+
+Today I fixed the Generator file so that it produces a .json file with the traditional formatting. I tested it with our knapsack.py and it runs successfully! I will try to get the timing done today as well, now that the generator can be used to create large files.
