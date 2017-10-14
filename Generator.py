@@ -25,6 +25,20 @@ def write_obj_to_json_file(filename, obj, prettyPrint):
         json.dump(ret, f)
     return name
 
+def create_json(filename, maxWeight, numPairs, min, max):
+    container = []
+    dict1 = {}
+    dict1["capacity"] = maxWeight
+    container.append(dict1)
+    data = {}
+    for i in range(numPairs):
+        data[i] = [randint(min,max), randint(min,max)]
+    #    data[randint(min,max)] = randint(min, max)
+    container.append(data)
+    print(len(data))
+    with open(filename, mode='w') as f:
+        json.dump(container, f, separators=(",",":"))
+
 def create_problem_set(maxWeight, numPairs, min, max):
     outside_list = []
     for i in range(0, numPairs):
@@ -41,6 +55,8 @@ def create_problem_set(maxWeight, numPairs, min, max):
 
 if __name__ == "__main__":
     # you can access any inside_list from the outside_list and append
-    outside_list = create_problem_set(1000, 10, 10, 500)
-    write_obj_to_json_file("outputFile", outside_list, prettyPrint="true")
+    create_json("100_pairs.json", 1000, 100, 10, 500)
+#    outside_list = create_problem_set(1000, 10, 10, 500)
+#    print(outside_list)
+#    write_obj_to_json_file("outputFile", outside_list, prettyPrint="true")
 
