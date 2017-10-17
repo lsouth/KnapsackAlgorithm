@@ -4,10 +4,10 @@ import time
 import json
 import generate_problems
 
-#note: taken (and modified) from stable_matching_helpers.py which was given as a part of Programming Assignment 6.
+#note: modified from stable_matching_helpers.py which was given as a part of Programming Assignment 6.
 def dict_to_pref_list(prefs):
-    """Takes a dict like {'a': 0, 'b': 1, 'c': 2} and returns two list like ['a', 'b', 'c']"""
-    return [[tup[0] for tup in sorted(prefs.items())],[tup[1] for tup in sorted(prefs.items())]]
+    """Takes a dict like {'1': [a,b], '2': [c,d], '3': [e,f]} and returns two lists like [[a,b],[c,d],[e,f]]"""
+    return [tup[1] for tup in sorted(prefs.items())]
 
 def generate_json():
     return generate_problems.create_random_problems_json_file()
@@ -23,29 +23,12 @@ def read_json(filename):
 class Knapsack:
     W = 0
     N = 0
- #   items = []
     values = []
     weights = []
     table = [[]]
 
     def __str__(self):
         return np.matrix(self.table)
-
-#    def read_input(self, filename):
-        #expected input:
-        # W (total capacity)
-        # v1 w1
-        # v2 w2
-        # ...
-        # vn wn
-        # f = open(filename)
-#        with open(filename) as f:
-#           self.W = int(f.readline())
-#            self.N = int(f.readline())
-#            self.items.append([0,0])
-#            for i in range(self.N):
-#                self.items.append(f.readline().split())
-#        self.table = [[0 for x in range(self.W + 1)] for y in range(self.N + 1)]
 
     def make_table(self):
         self.table = [[0 for x in range(self.W + 1)] for y in range(self.N + 1)]
@@ -64,12 +47,10 @@ class Knapsack:
 
     def backtrack(self):
         opt = self.table[self.N][self.W]
-        current_weight = self.W
+    #    current_weight = self.W
         for i in range(self.N, 0, -1):
-            if current_weight == 0:
+            if self.W == 0:
                 return
-#            print("Weights: ",self.weights)
-#            print("Values:", self.values)
             check = self.table[i - 1][self.W - int(self.weights[i])]   #0 = value, 1 = weight
             if check + int(self.values[i]) == opt:
                 print("Take item with value ", self.values[i], " and weight ", self.weights[i])
@@ -78,15 +59,17 @@ class Knapsack:
 
 if __name__ == "__main__":
     k = Knapsack()
-#    k.read_input(sys.argv[1])
     input = {}
     input = read_json(sys.argv[1])
     k.W = int(input[0].get("capacity"))
+    print("Capacity is ", k.W)
     k.N = int(len(input[1]))
+    print("N is ", k.N)
     dictionary = dict_to_pref_list(input[1])
-    k.weights = dictionary[1]
+    for d in dictionary:
+        k.weights.append(d[1])
+        k.values.append(d[0])
     k.weights.insert(0, 0)
-    k.values = dictionary[0]
     k.values.insert(0, 0)
     t0 = time.process_time()
     k.make_table()
