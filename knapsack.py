@@ -36,8 +36,8 @@ class Knapsack:
             self.table[0][i] = 0
         for i in range(1,self.N + 1):
             for w in range(self.W + 1):
-
                 weight_i = int(self.weights[i])
+
                 value_i = int(self.values[i])
                 if weight_i > w:
                     self.table[i][w] = self.table[i - 1][w]
@@ -45,9 +45,35 @@ class Knapsack:
                     self.table[i][w] = max(self.table[i-1][w], value_i + self.table[i-1][w-weight_i])
         return self.table[self.N - 1][self.W - 1]
 
+    def buildTable2(self):
+        self.table = [[0 for w in range(self.W + 1)] for j in range(self.N + 1)]
+
+        for j in range(1, self.N + 1):
+            wt = self.weights[j - 1]
+            vt = self.values[j - 1]
+            for w in range(1, self.W + 1):
+                if wt > w:
+                    self.table[j][w] = self.table[j-1][w]
+                else:
+                    self.table[j][w] = max(self.table[j-1][w], self.table[j-1][w - wt] + vt)
+        return
+
+    def backtrack2(self):
+        opt = self.table[self.N][self.W]
+        print("Optimal value is ", opt)
+        w = self.W
+        result = []
+        for i in range(self.N, 0, -1):
+            added = self.table[i][w] != self.table[i - 1][w]
+            if added:
+                result.append([ self.values[i - 1], self.weights[i - 1] ])
+                w -= self.weights[i - 1]
+                if w < 0:
+                    break
+        return result
+
     def backtrack(self):
         opt = self.table[self.N][self.W]
-    #    current_weight = self.W
         for i in range(self.N, 0, -1):
             if self.W == 0:
                 return
@@ -62,9 +88,7 @@ if __name__ == "__main__":
     input = {}
     input = read_json(sys.argv[1])
     k.W = int(input[0].get("capacity"))
-    print("Capacity is ", k.W)
     k.N = int(len(input[1]))
-    print("N is ", k.N)
     dictionary = dict_to_pref_list(input[1])
     for d in dictionary:
         k.weights.append(d[1])
@@ -72,9 +96,14 @@ if __name__ == "__main__":
     k.weights.insert(0, 0)
     k.values.insert(0, 0)
     t0 = time.process_time()
-    k.make_table()
+#    k.make_table()
+    k.buildTable2()
     t1 = time.process_time()
-    k.backtrack()
+#    k.backtrack()
+    results = k.backtrack2()
+    print("%s items in Knapsack" % len(results))
+    print("Total value in Knapsack: ",sum(r[0] for r in results))
+    print("Total weight in Knapsack: ",sum(r[1] for r in results))
     t2 = time.process_time()
     print("Time to build table: ", t1 - t0)
     print("Time to backtrack: ", t2 - t1)

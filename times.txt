@@ -1,5 +1,6 @@
-# of pairs		buildtable		backtrack
-100				0.0625			0
-500				0.28125			0
-1000			0.3906			0
-2000			9.203			0
+# of pairs		capacity    buildtable		backtrack
+10              40            0               0
+100				500            0.0156			0
+500				500            0.09375			0
+1000			500            0.234375			0
+2000			500            0.375			0.0156
