@@ -35,3 +35,7 @@ I also made a slight alteration to our expected JSON format. Before we were usin
 [{"capacity": maxWeight} , {"value_i": "weight_i", "value_i+1": "weight_i+1", ... }] which was fine on small problems but caused issues with big problems. Dicts cannot have duplicate keys so when we were creating the random problems it would create override any duplicate "value_i"s so the end result would have fewer pairs that expected. To fix this, I changed to using this format:
 
 [{"capacity": maxWeight} , {1 : [value_1 , weight_1] , 2 : [value_2 , weight_2] , ... }] which ensures that there will be no duplicate keys. 
+
+October 20: Laura
+
+I found the bug that was preventing us from properly backtracking in larger files! We were one off on the indexing in the backtracking function. I also updated times.txt with the new data!
