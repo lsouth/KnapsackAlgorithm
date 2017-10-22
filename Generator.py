@@ -55,7 +55,7 @@ def create_problem_set(maxWeight, numPairs, min, max):
 
 if __name__ == "__main__":
     # you can access any inside_list from the outside_list and append
-    create_json("100_pairs.json", 1000, 100, 10, 500)
+    create_json("1000_pairs.json", 400, 1000, 10, 200)
 #    outside_list = create_problem_set(1000, 10, 10, 500)
 #    print(outside_list)
 #    write_obj_to_json_file("outputFile", outside_list, prettyPrint="true")
