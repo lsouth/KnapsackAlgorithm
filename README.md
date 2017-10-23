@@ -39,3 +39,11 @@ I also made a slight alteration to our expected JSON format. Before we were usin
 October 20: Laura
 
 I found the bug that was preventing us from properly backtracking in larger files! We were one off on the indexing in the backtracking function. I also updated times.txt with the new data!
+
+October 22: Kira
+
+I went through the knapsack algorithm code, and added in comments to better explain the code to someone who might
+not be as familiar with it. This also helped me further my understanding of the code, since the one that I initially wrote
+had a bit of a different structure than Laura's. I also created more test files (2000, 3000, 4000, and 100000 pairs) to use
+to plot the complexity of our code. The graph I constructed then went into the report to help the visualization of the
+effect that increasing the number of pairs has on our code.
