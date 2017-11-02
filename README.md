@@ -47,3 +47,7 @@ not be as familiar with it. This also helped me further my understanding of the 
 had a bit of a different structure than Laura's. I also created more test files (2000, 3000, 4000, and 100000 pairs) to use
 to plot the complexity of our code. The graph I constructed then went into the report to help the visualization of the
 effect that increasing the number of pairs has on our code.
+
+November 1: Laura
+
+I made quite a bit of progress tonight on the recursive space-efficient implementation of the Knapsack algorithm. I wrote code to build the small tables, select the proper cut points, and recurse accordingly. I'm still having some trouble getting the algorithm to actually select the right element, but I think that I completed a lot of the necessary helper functions. 
