@@ -51,3 +51,7 @@ effect that increasing the number of pairs has on our code.
 November 1: Laura
 
 I made quite a bit of progress tonight on the recursive space-efficient implementation of the Knapsack algorithm. I wrote code to build the small tables, select the proper cut points, and recurse accordingly. I'm still having some trouble getting the algorithm to actually select the right element, but I think that I completed a lot of the necessary helper functions. 
+
+November 14: Laura
+
+Today I found the bug that we've been working on all week -- it turns out our indexing was one off in the loop that identifies the cut points. I fixed this and now the memory efficient version gets the same outputs as the standard version. Our next job will be to produce complexity graphs for this implementation. 
