@@ -55,4 +55,6 @@ I made quite a bit of progress tonight on the recursive space-efficient implemen
 November 13: Kira
 I updated the report to include how I worked to best understand the algorithm before I starting coding by including my process. I also expanded on an explanation of the graph provided from the dynamic programming approach, and added in another section to explain how we both felt about how the honors option expirience, and what worked well and what could be improved. We still need to measure the memory of both implementations to prove that the new algorithm is improved. 
 
+November 14: Laura
 
+Today I found the bug that we've been working on all week -- it turns out our indexing was one off in the loop that identifies the cut points. I fixed this and now the memory efficient version gets the same outputs as the standard version. Our next job will be to produce complexity graphs for this implementation. 
