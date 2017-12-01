@@ -1,6 +1,7 @@
 import json
 import sys
 import math
+import objgraph
 
 def dict_to_pref_list(prefs):
     """Takes a dict like {'1': [a,b], '2': [c,d], '3': [e,f]} and returns two lists like [[a,b],[c,d],[e,f]]"""
@@ -47,7 +48,7 @@ def findSolution(n, capacity, weights, values):
 
         for i in range(capacity + 1):
             if row1[i] + row2[capacity - i] > maximum:
-                maximum = row1[i] + row2[capacity  - i]
+                maximum = row1[i] + row2[capacity - i]
                 cut1 = i
                 cut2 = capacity - i
         remainder = (int)(n/2)
@@ -65,4 +66,5 @@ if __name__  == "__main__":
         weights.append(d[1])
         values.append(d[0])
     findSolution(len(values), W, weights, values)
+    objgraph.show_most_common_types()
     print(output, sum(item[0] for item in output))

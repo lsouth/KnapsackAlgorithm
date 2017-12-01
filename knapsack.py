@@ -3,6 +3,7 @@ import numpy as np
 import time
 import json
 import generate_problems
+import objgraph
 
 #note: modified from stable_matching_helpers.py which was given as a part of Programming Assignment 6.
 def dict_to_pref_list(prefs):
@@ -121,3 +122,4 @@ if __name__ == "__main__":
     print("%s items in Knapsack: " % len(results))
     print("Total value in Knapsack: ",sum(r[0] for r in results))
     print("Total weight in Knapsack: ",sum(r[1] for r in results))
+    objgraph.show_most_common_types()
